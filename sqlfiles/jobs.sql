@@ -10,3 +10,5 @@ CREATE TABLE jobs (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (created_by) REFERENCES users(id)
 );
+
+SELECT * FROM jobs

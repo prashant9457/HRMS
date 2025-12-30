@@ -5,6 +5,9 @@ Handles login using Flask sessions.
 """
 
 from werkzeug.security import check_password_hash
+from werkzeug.security import generate_password_hash
+from models import db
+
 
 from flask import Blueprint, request, jsonify, session, redirect, url_for, render_template
 from models import User
@@ -61,6 +64,55 @@ def login():
         return redirect('/hr/dashboard')
 
     return "Invalid role"
+
+
+@auth_bp.route('/signup', methods=['GET', 'POST'])
+def signup():
+    """
+    GET  /auth/signup  -> show signup form
+    POST /auth/signup  -> create candidate user
+    """
+
+    if request.method == 'GET':
+        return render_template('auth/signup.html')
+
+    # POST request (form submitted)
+    name = request.form['name']
+    email = request.form['email']
+    phone = request.form['phone']
+    password = request.form['password']
+
+    # Check if email already exists
+    existing_user = User.query.filter_by(email=email).first()
+    if existing_user:
+        return render_template(
+            'auth/signup.html',
+            error="Email already registered"
+        )
+
+    # Hash the password automatically
+    password_hash = generate_password_hash(password)
+
+    # Create user with role = candidate
+    user = User(
+        role='candidate',
+        name=name,
+        email=email,
+        phone=phone,
+        password_hash=password_hash
+    )
+
+    db.session.add(user)
+    db.session.commit()
+
+    # Auto-login after signup
+    session['user_id'] = user.id
+    session['role'] = user.role
+    session['name'] = user.name
+    session['email'] = user.email
+
+    # Redirect to candidate dashboard
+    return redirect('/candidate/dashboard')
 
 
 

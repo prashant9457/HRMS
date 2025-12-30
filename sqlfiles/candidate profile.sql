@@ -8,3 +8,7 @@ CREATE TABLE candidate_profiles (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
+
+INSERT INTO candidate_profiles (dob, address, category, education, created_at)
+
+SELECT * FROM candidate_profiles

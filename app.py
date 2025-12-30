@@ -13,7 +13,7 @@ NOTE:
 No business logic should be written here.
 """
 
-from flask import Flask
+from flask import Flask,session, redirect, render_template
 from models import db
 
 # Import route blueprints
@@ -43,9 +43,28 @@ app.register_blueprint(admin_bp)
 app.register_blueprint(hr_bp)
 
 # Basic home route (health check)
+
+
 @app.route('/')
 def home():
-    return "HRMS Prototype Running"
+    """
+    Public landing page.
+    If user is already logged in, redirect to their dashboard.
+    """
+
+    if 'user_id' in session:
+        role = session.get('role')
+
+        if role == 'candidate':
+            return redirect('/candidate/dashboard')
+        elif role == 'admin':
+            return redirect('/admin/dashboard')
+        elif role == 'hr':
+            return redirect('/hr/dashboard')
+
+    # Not logged in → show landing page
+    return render_template('landing.html')
+
 
 # Start the server
 if __name__ == '__main__':
