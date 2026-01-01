@@ -35,7 +35,8 @@ def list_jobs():
 
     # Apply department filter if provided
     if department:
-        query = query.filter(Job.department.ilike(f"%{department}%"))
+        query = query.filter(Job.department.ilike(f"%{department}%")) #SELECT * FROM job WHERE department ILIKE '%value%';
+
 
     # Apply location filter if provided
     if location:

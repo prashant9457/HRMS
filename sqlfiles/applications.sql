@@ -8,3 +8,7 @@ CREATE TABLE applications (
     FOREIGN KEY (candidate_id) REFERENCES candidate_profiles(id),
     FOREIGN KEY (job_id) REFERENCES jobs(id)
 );
+
+DELETE FROM applications WHERE candidate_id=3;
+
+SELECT * FROM applications

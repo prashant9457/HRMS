@@ -27,7 +27,7 @@ from routes.hr import hr_bp
 app = Flask(__name__)
 
 # Database configuration (SQLite)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db' # location of the database file
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Secret key (used later for sessions/auth)

@@ -3,9 +3,10 @@ routes/auth.py
 --------------
 Handles login using Flask sessions.
 """
-
+#werkzeug security for password hashing
 from werkzeug.security import check_password_hash
 from werkzeug.security import generate_password_hash
+
 from models import db
 
 
@@ -83,7 +84,7 @@ def signup():
     password = request.form['password']
 
     # Check if email already exists
-    existing_user = User.query.filter_by(email=email).first()
+    existing_user = User.query.filter_by(email=email).first() #equivalent to SELECT * FROM users WHERE email = ? LIMIT 1;
     if existing_user:
         return render_template(
             'auth/signup.html',
