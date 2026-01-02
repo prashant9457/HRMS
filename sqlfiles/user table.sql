@@ -20,7 +20,16 @@ VALUES (
 
 
 DELETE FROM users
-WHERE email = 'admin@mcd.in';
+WHERE email = 'hari@hr.in';
 
 SELECT * FROM users
 
+
+INSERT INTO users (role, name, email, phone, password_hash)
+VALUES (
+  'HR',
+  'Hari',
+  'hari@hr.in',
+  '9999999999',
+  'scrypt:32768:8:1$rCuPtZgwWPfWSnLp$928b4b33c7fa95a9d880a733a88f6eb13d75beaef735e29edd231290a3696d7268fa217c42e14a94f55eeb8ee0151bf4ab233429dde217ccfd05d372cea38a34'
+);
