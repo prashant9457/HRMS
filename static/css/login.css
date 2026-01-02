@@ -1,0 +1,132 @@
+/* ================= RESET ================= */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ================= BACKGROUND ================= */
+body {
+    background: linear-gradient(135deg, #020b14, #04101f, #0A192F);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #EDEDED;
+}
+
+/* ================= CONTAINER ================= */
+.login-container {
+    width: 100%;
+    padding: 20px;
+}
+
+/* ================= CARD ================= */
+.login-card {
+    max-width: 420px;
+    margin: auto;
+    padding: 40px 35px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+    text-align: center;
+}
+
+/* ================= TEXT ================= */
+.login-card h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin-bottom: 30px;
+}
+
+/* ================= FORM ================= */
+form {
+    margin-top: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 14px 15px;
+    margin-bottom: 16px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+input:focus {
+    border-color: #ffcf70;
+    box-shadow: 0 0 0 2px rgba(255, 207, 112, 0.25);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* ================= BUTTON ================= */
+.login-btn {
+    width: 100%;
+    padding: 14px;
+    margin-top: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #ffcf70, #ffa743);
+    color: #111;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(255, 207, 112, 0.4);
+}
+
+/* ================= FEEDBACK ================= */
+.error {
+    background: rgba(255, 80, 80, 0.15);
+    color: #ff6b6b;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+}
+
+.hint {
+    font-size: 0.75rem;
+    opacity: 0.6;
+    margin-top: 12px;
+}
+
+/* ================= SIGNUP LINK ================= */
+.signup-text {
+    margin-top: 18px;
+    font-size: 0.85rem;
+}
+
+.signup-text a {
+    color: #ffcf70;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.signup-text a:hover {
+    text-decoration: underline;
+}

@@ -17,7 +17,7 @@ def hr_dashboard():
     """
     HR dashboard
     """
-    if 'user_id' not in session or session.get('role') != 'hr':
+    if 'user_id' not in session or session.get('role') != 'HR':
         return redirect('/auth/login')
 
     return render_template(

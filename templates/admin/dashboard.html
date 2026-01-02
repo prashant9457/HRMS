@@ -1,90 +1,108 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="/static/css/style.css">
+    <meta charset="UTF-8">
+    <title>Admin Dashboard • HRMS</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Admin Dashboard CSS -->
+    <link rel="stylesheet" href="/static/css/adminDashboard.css">
 </head>
+
 <body>
 
-<div class="card">
-    <h2>Admin Profile</h2>
-    <p><b>Name:</b> {{ user.name }}</p>
-    <p><b>Role:</b> Recruitment Admin</p>
+<div class="dashboard-container">
 
-    <a href="/auth/logout">Logout</a>
-</div>
+    <!-- ================= ADMIN PROFILE ================= -->
+    <div class="profile-card">
+        <h2>Admin Profile</h2>
+        <p><b>Name:</b> {{ user.name }}</p>
+        <p><b>Role:</b> Recruitment Admin</p>
 
+        <a href="/auth/logout" class="logout-btn">Logout</a>
+    </div>
 
+    <!-- ================= CREATE JOB ================= -->
+    <div class="form-card">
+        <h2>Create & Publish Job</h2>
 
-<div class="card" style="margin-top:20px;">
-    <h2>Create & Publish Job</h2>
+        <div class="form-grid">
+            <input id="title" placeholder="Job Title">
 
-    <!-- Job input fields -->
-    <input id="title" placeholder="Job Title">
-    <input id="department" placeholder="Department">
-    <input id="location" placeholder="Location">
-    <input id="vacancies" placeholder="Vacancies">
+            <!-- Department Dropdown -->
+            <select id="department">
+                <option value="">Select Department</option>
+                <option>Human Resources</option>
+                <option>Engineering</option>
+                <option>Finance</option>
+                <option>Urban Planning</option>
+                <option>IT Services</option>
+                <option>Public Health</option>
+            </select>
 
-    <!-- Clicking this publishes the job -->
-    <button onclick="createJob()">Publish Job</button>
+            <!-- Location Dropdown -->
+            <select id="location">
+                <option value="">Select Location</option>
+                <option>New Delhi HQ</option>
+                <option>North Zone Office</option>
+                <option>South Zone Office</option>
+                <option>East Zone Office</option>
+                <option>West Zone Office</option>
+            </select>
 
+            <input id="vacancies" type="number" placeholder="Vacancies">
+        </div>
 
-    <h3>Published Jobs</h3>
+        <button class="primary-btn" onclick="createJob()">Publish Job</button>
+        <p id="msg" class="message"></p>
+    </div>
 
-{% for job in jobs %}
-<div class="card">
-    <p><b>{{ job.title }}</b></p>
-    <p>Department: {{ job.department }}</p>
+    <!-- ================= PUBLISHED JOBS ================= -->
+    <section class="jobs-section">
+        <h2>Published Jobs</h2>
 
-    <a href="/admin/job/{{ job.id }}/applications">
-        View Applicants
-    </a>
-</div>
-{% endfor %}
-   
+        <div class="jobs-grid">
+            {% for job in jobs %}
+            <div class="job-card">
 
+                <!-- Map Placeholder -->
+                <div class="job-map">
+                    📍 {{ job.location if job.location else "MCD Office" }}
+                </div>
 
-    <!-- Status message -->
-    <p id="msg"></p>
+                <h4>{{ job.title }}</h4>
+                <p class="job-dept">{{ job.department }}</p>
+
+                <a href="/admin/job/{{ job.id }}/applications" class="view-btn">
+                    View Applicants
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
 </div>
 
 <script src="/static/js/app.js"></script>
 
 <script>
-/*
-createJob()
------------
-Called when admin clicks "Publish Job"
-
-Flow:
-1. Collect form data
-2. Send POST request to backend
-3. Backend saves job in DB
-4. Show success/error message
-*/
 async function createJob() {
-
-    // Collect job details from form
     const data = {
         title: document.getElementById("title").value,
         department: document.getElementById("department").value,
         location: document.getElementById("location").value,
         vacancies: parseInt(document.getElementById("vacancies").value),
-
-        // created_by comes from session (logged-in admin)
         created_by: {{ user.user_id }}
     };
 
-    // Send data to backend route
     const res = await postData("/admin/create-job", data);
-
-    // Show response to admin
-    document.getElementById("msg").innerText =
-        res.message || res.error;
+    document.getElementById("msg").innerText = res.message || res.error;
+    document.getElementById("msg").className =
+        res.error ? "message error" : "message success";
 }
 </script>
-
-
 
 </body>
 </html>

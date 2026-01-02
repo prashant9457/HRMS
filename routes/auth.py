@@ -35,7 +35,7 @@ def login():
     email = request.form['email']
     password = request.form['password']
 
-    user = User.query.filter_by(email=email).first()
+    user = User.query.filter_by(email=email).first() # select from users where email = ? limit 1;
 
     if not user:
         return render_template(
@@ -61,7 +61,7 @@ def login():
         return redirect('/candidate/dashboard')
     elif user.role == 'admin':
         return redirect('/admin/dashboard')
-    elif user.role == 'hr':
+    elif user.role == 'HR':
         return redirect('/hr/dashboard')
 
     return "Invalid role"
