@@ -10,20 +10,19 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Custom Landing Page CSS -->
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="static/css/landing.css">
 </head>
 
 <body style="padding-top:80px;">
 
-<!-- Top Navigation (becomes heading holder on scroll) -->
-<nav id="mainHeader" class="navbar navbar-dark bg-dark py-3 shadow-sm fixed-top">
+<!-- NAVBAR (UNCHANGED LOGIC) -->
+<nav id="mainHeader" class="navbar navbar-dark fixed-top py-3">
     <div class="container d-flex justify-content-between align-items-center">
         <h3 id="headerTitle" class="m-0">
             <span id="short">HRMS</span>
             <span id="long">Human Resource Management System</span>
         </h3>
-
         <div>
             <a href="/auth/login" class="btn btn-outline-light me-2">Login</a>
             <a href="/auth/signup" class="btn btn-primary">Create Account</a>
@@ -31,69 +30,134 @@
     </div>
 </nav>
 
-
-<!-- Full-screen Hero Section -->
-<section id="hero" class="fullscreen-hero">
-    <h1 id="heroTitle">
-    Human Resource <span>Management System</span>
-</h1>
-    <p class="lead text-center">A Unified Digital HR Platform for the Municipal Corporation of Delhi</p>
-
-    <div class="mt-4 text-center">
-        <a href="/auth/login" class="btn btn-outline-light btn-lg me-3 cta-btn">Login</a>
-        <a href="/auth/signup" class="btn btn-primary btn-lg cta-btn">Create Account</a>
-    </div>
-</section>
-
-
-<!-- Features Section -->
-<section class="features">
+<!-- HERO — SPLIT LAYOUT -->
+<section class="hero-split">
     <div class="container">
-        <h2 class="text-center fw-bold">What You Can Do</h2>
-        <div class="row g-4 mt-4">
+        <div class="row align-items-center g-5">
 
-            <div class="col-md-4">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <img src="static/img/application.png" alt="lifestyle" class="feature-img">
-                    </div>
-                    <h5>Job Applications</h5>
-                    <p>Apply for job openings and streamline candidate evaluation digitally.</p>
+            <!-- LEFT -->
+            <div class="col-lg-6">
+                <h1 id="heroTitle">
+                    Human Resource<br>
+                    <span class="accent-text">Management System</span>
+                </h1>
+                <p class="lead mt-3">
+                    A centralized digital HR platform for transparency,
+                    efficiency, and governance across MCD departments.
+                </p>
+
+                <div class="mt-4">
+                    <a href="/auth/login" class="btn btn-primary btn-lg me-3">Login</a>
+                    <a href="/auth/signup" class="btn btn-outline-light btn-lg">Create Account</a>
                 </div>
             </div>
 
-            <div class="col-md-4">
-                <div class="feature-card">  
-                    <div class="feature-icon">
-                        <img src="static/img/lifestyle.png" alt="lifestyle" class="feature-img">
-                    </div>
-                    <h5>Lifecycle Tracking</h5>
-                    <p>Maintain complete employee history, transfers, and promotions with transparency.</p>
-                </div>
+            <!-- RIGHT (ILLUSTRATION) -->
+            <div class="col-lg-6 text-center">
+                <img src="static\img\digitalgovernment.png"
+                     class="img-fluid hero-img"
+                     alt="Digital Governance">
             </div>
-
-            <div class="col-md-4">
-                <div class="feature-card">
-                    <!-- Image instead of icon -->
-                    <div class="feature-icon">
-                        <img src="static/img/onboard.png" alt="Transfers & Onboarding" class="feature-img">
-                    </div>
-                    <h5>Transfers & Onboarding</h5>
-                    <p>Efficiently handle new employees, onboarding and inter-departmental transfers online.</p>
-                </div>
-            </div>
-
 
         </div>
     </div>
 </section>
 
+<!-- PRIMARY FEATURES — ASYMMETRIC GRID -->
+<section class="features-primary">
+    <div class="container">
+        <h2 class="section-title">Core Capabilities</h2>
 
-<!-- Footer -->
+        <div class="row g-4 mt-4">
+
+            <!-- BIG CARD -->
+            <div class="col-lg-6">
+                <div class="feature-card feature-card-lg">
+                    <img src="static/img/centralized.png" class="feature-icon-lg">
+                    <h4>Centralized Employee Records</h4>
+                    <p>
+                        A single, verified system of record for employee profiles,
+                        service history, postings, and official documents.
+                    </p>
+                </div>
+            </div>
+
+            <!-- STACKED CARDS -->
+            <div class="col-lg-6">
+                <div class="row g-4">
+                    <div class="col-12">
+                        <div class="feature-card">
+                            <img src="static/img/transfer.png" class="feature-icon">
+                            <h5>Transparent Transfers & Lifecycle</h5>
+                            <p>
+                                Track promotions, postings, and transfers
+                                with full auditability.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="feature-card">
+                            <img src="static/img/documentation.png" class="feature-icon">
+                            <h5>Digital Recruitment & Onboarding</h5>
+                            <p>
+                                Job applications, verification, and onboarding
+                                workflows — fully digital.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- MODULES — COMPACT INTERACTIVE GRID -->
+<section class="modules">
+    <div class="container">
+        <h2 class="section-title">HRMS Modules</h2>
+
+        <div class="row g-4 mt-4">
+            <div class="col-md-3"><div class="module-card">Recruitment</div></div>
+            <div class="col-md-3"><div class="module-card">Employee Profiles</div></div>
+            <div class="col-md-3"><div class="module-card">Transfers</div></div>
+            <div class="col-md-3"><div class="module-card">Leave & Attendance</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- PROCESS FLOW — HORIZONTAL -->
+<section class="process">
+    <div class="container">
+        <h2 class="section-title">How It Works</h2>
+
+        <div class="process-grid mt-5">
+            <div class="process-step">Login</div>
+            <div class="process-step">Submit Request</div>
+            <div class="process-step">Review & Approval</div>
+            <div class="process-step">Record Update</div>
+        </div>
+    </div>
+</section>
+
+<!-- TRUST -->
+<section class="trust">
+    <div class="container text-center">
+        <h2 class="section-title">Security & Governance</h2>
+        <p class="mt-3">
+            Role-based access control, audit trails, and secure data handling
+            aligned with government IT standards.
+        </p>
+    </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
     <p>© Municipal Corporation of Delhi • HRMS Prototype System</p>
 </footer>
 
+<!-- SCROLL JS (UNCHANGED) -->
 <script>
 const heroTitle = document.getElementById("heroTitle");
 const header = document.getElementById("mainHeader");
@@ -110,10 +174,7 @@ window.addEventListener("scroll", () => {
     headerTitle.classList.remove("scrolled");
   }
 });
-
 </script>
-
-
 
 </body>
 </html>
