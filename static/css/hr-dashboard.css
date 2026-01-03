@@ -1,0 +1,198 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    background: radial-gradient(circle at top right, #1f2a44, #050b16);
+    color: #eaeaea;
+    min-height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 40px;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(12px);
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.role {
+    color: #9aa4b2;
+}
+
+.btn-outline {
+    border: 1px solid #4da3ff;
+    padding: 8px 18px;
+    border-radius: 8px;
+    color: #4da3ff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* Layout */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Glass Card */
+.glass-card {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.08),
+        rgba(255, 255, 255, 0.02)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 18px;
+    padding: 30px;
+    margin-bottom: 30px;
+    backdrop-filter: blur(16px);
+}
+
+.glass-card h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, #4da3ff, #9b5cff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Filters */
+.filters {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.filters input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    outline: none;
+}
+
+.filters input::placeholder {
+    color: #9aa4b2;
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, #4da3ff, #9b5cff);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* Employee Grid */
+.employee-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 22px;
+}
+
+/* Employee Card */
+.employee-card {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 18px;
+    padding: 20px;
+    position: relative;
+    transition: 0.3s ease;
+}
+
+.employee-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+}
+
+.employee-card h3 {
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+
+.employee-card .dept {
+    font-size: 14px;
+    color: #9aa4b2;
+    margin-bottom: 12px;
+}
+
+/* Info */
+.info {
+    font-size: 13px;
+    margin-bottom: 6px;
+    color: #cfd6e1;
+}
+
+.info span {
+    color: #9aa4b2;
+}
+
+/* Verification Badge */
+.badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 20px;
+    font-weight: 700;
+}
+
+.verified {
+    background: rgba(77, 255, 136, 0.2);
+    color: #4dff88;
+    border: 1px solid #4dff88;
+}
+
+.unverified {
+    background: rgba(255, 77, 77, 0.2);
+    color: #ff4d4d;
+    border: 1px solid #ff4d4d;
+}
+
+/* Actions */
+.card-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.card-actions button {
+    flex: 1;
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.view-btn {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+}
+
+.verify-btn {
+    background: linear-gradient(90deg, #4da3ff, #9b5cff);
+    color: #000;
+}

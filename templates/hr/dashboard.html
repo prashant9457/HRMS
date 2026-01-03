@@ -1,23 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>HR Dashboard</title>
-    <link rel="stylesheet" href="/static/css/style.css">
+    <title>HR Dashboard | HRMS</title>
+    <link rel="stylesheet" href="/static/css/hr-dashboard.css">
 </head>
 <body>
 
-<div class="card">
-    <h2>HR Profile</h2>
-    <p><b>Name:</b> {{ user.name }}</p>
-    <p><b>Role:</b> HR Admin</p>
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="logo">HRMS</div>
+    <div class="nav-right">
+        <span class="role">HR Admin</span>
+        <a href="/auth/logout" class="btn-outline">Logout</a>
+    </div>
+</nav>
 
-    <a href="/auth/logout">Logout</a>
+<!-- Main Content -->
+<div class="container">
+
+    <!-- HR Profile -->
+    <section class="glass-card">
+        <h2>HR Profile</h2>
+        <p><b>Name:</b> {{ user.name }}</p>
+        <p><b>Role:</b> Human Resource Administrator</p>
+    </section>
+
+    <!-- Employee Directory -->
+    <section class="glass-card">
+        <h2>Employee Directory</h2>
+
+        <!-- Filters -->
+        <div class="filters">
+            <input id="filterName" placeholder="Employee Name">
+            <input id="filterDept" placeholder="Department">
+            <button class="btn-primary" onclick="loadEmployees()">Search</button>
+        </div>
+
+        <!-- Employee Cards -->
+        <div id="employeeGrid" class="employee-grid"></div>
+    </section>
+
 </div>
 
-<div class="card" style="margin-top:20px;">
-    <h2>HR Feed</h2>
-    <p>Selected candidates and employee onboarding will appear here.</p>
-</div>
-
+<script src="/static/js/hr-dashboard.js"></script>
 </body>
 </html>
